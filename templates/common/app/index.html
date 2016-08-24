@@ -13,6 +13,7 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <% if (materialize) { %><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><% } %>
   </head>
   <body ng-app="<%= scriptAppName %>">
     <!--[if lte IE 8]>
@@ -20,6 +21,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
+    <% if (!materialize) { %>
     <div class="header">
       <div class="navbar navbar-default" role="navigation">
         <div class="container">
@@ -48,6 +50,27 @@
         </div>
       </div>
     </div>
+    <% } else { %>
+    <div class="nav-container" ng-controller="NavController">
+      <nav>
+        <div class="nav-wrapper container">
+          <a href="#/" class="brand-logo"><%= appname %></a>
+          <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li ng-class="{ active: currentPath('/') }"><a href="#/">Home</a></li>
+            <li ng-class="{ active: currentPath('/about')}"><a href="<% if (ngRoute) { %>#/about<% } else { %>#/<% } %>">About</a></li>
+            <li ng-class="{ active: currentPath('/contact')}"><a href="#/">Contact</a></li>
+          </ul>
+          <ul id="mobile-nav" class="side-nav">
+            <li ng-class="{ active: currentPath('/') }"><a href="#/">Home</a></li>
+            <li ng-class="{ active: currentPath('/about')}"><a href="<% if (ngRoute) { %>#/about<% } else { %>#/<% } %>">About</a></li>
+            <li ng-class="{ active: currentPath('/contact')}"><a href="#/">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <% } %>
+
 
     <div class="container">
     <% if (ngRoute) {

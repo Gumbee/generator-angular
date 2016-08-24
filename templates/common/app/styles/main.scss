@@ -50,10 +50,12 @@ body {
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
+  padding: 10px;
+  background-color: #eee;
+  border-radius: 6px;
 
   .btn {
     font-size: 21px;
-    padding: 14px 24px;
   }
 }
 
@@ -87,4 +89,12 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+.nav-container {
+  padding-bottom: 19px;
+}
+
+.nav-container nav {
+  padding: 0 22px;
 }

@@ -9,7 +9,8 @@
     "component",
     "front-end",
     "app",
-    "angular"
+    "angular",
+    "materialize"
   ],
   "author": "The Yeoman Team",
   "main": "app/index.js",

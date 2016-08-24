@@ -219,6 +219,28 @@ Generator.prototype.askForBootstrap = function askForBootstrap() {
   }.bind(this));
 };
 
+Generator.prototype.askForMaterialize = function askForMaterialize() {
+  var compass = this.compass;
+  var bootstrap = this.bootstrap;
+  var gulp = this.gulp;
+  var cb = this.async();
+
+  this.prompt([{
+    type: 'confirm',
+    name: 'materialize',
+    message: 'Would you like to include Materialize?',
+    default: true,
+    when: function(props) {
+      return !bootstrap;
+    }
+  }], function (props) {
+    this.materialize = props.materialize;
+    this.compassMaterialize = props.compassMaterialize;
+
+    cb();
+  }.bind(this));
+};
+
 Generator.prototype.askForModules = function askForModules() {
   var cb = this.async();
 

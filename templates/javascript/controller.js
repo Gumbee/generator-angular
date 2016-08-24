@@ -7,6 +7,12 @@
  * # <%= classedName %>Ctrl
  * Controller of the <%= scriptAppName %>
  */
+
+var $;
+$('#mobile-nav li').on('click', function(){
+  $('.button-collapse').sideNav('hide');
+});
+
 angular.module('<%= scriptAppName %>')
   .controller('<%= classedName %>Ctrl', function () {
     this.awesomeThings = [
@@ -14,4 +20,10 @@ angular.module('<%= scriptAppName %>')
       'AngularJS',
       'Karma'
     ];
+  })
+
+  .controller('NavController', function ($scope ,$location){
+	$scope.currentPath = function (viewLocation) { 
+		return viewLocation === $location.path();
+	};
   });
